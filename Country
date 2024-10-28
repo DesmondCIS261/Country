@@ -1,0 +1,51 @@
+def display_menu():
+              print("Country Menu")
+              print("1. View Country")
+              print("2. Add Country")
+              print("3. Delete Country")
+              print("4. Exit")
+def view_country(country_dict):
+              if not country_dict:
+                  print("Country dictionary is empty.")
+                  return
+              print("Country Codes:")
+              for key in country_dict.keys():
+                  print(key)
+              key_to_view = input("Enter the country code to view: ")
+              if key_to_view in country_dict:
+                  print(f"{key_to_view}: {country_dict[key_to_view]}")
+              else:
+                  print("Invalid country code.")
+def add_country(country_dict):
+              key = input("Enter the new country code: ")
+              if key in country_dict:
+                  print("Country code already exists.")
+                  return
+              name = input("Enter the country name: ")
+              country_dict[key] = name
+              print(f"{name} added to the dictionary.")
+def delete_country(country_dict):
+              key_to_delete = input("Enter the country code to delete: ")
+              if key_to_delete in country_dict:
+                  del country_dict[key_to_delete]
+                  print(f"{key_to_delete} deleted from the dictionary.")
+              else:
+                  print("Invalid country code.")
+def main():
+              country_dict = {"US": "United States", "AUS": "Australia", "UK": "United Kingdom"}
+              while True:
+                  display_menu()
+                  choice = input("Enter your choice: ")
+                  if choice == "1":
+                      view_country(country_dict)
+                  elif choice == "2":
+                      add_country(country_dict)
+                  elif choice == "3":
+                      delete_country(country_dict)
+                  elif choice == "4":
+                      print("Exiting...")
+                      break
+                  else:
+                      print("Invalid choice. Please try again.")
+if __name__ == "__main__":
+              main()
